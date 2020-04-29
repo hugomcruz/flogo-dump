@@ -1,0 +1,35 @@
+{
+  "name": "dump1090",
+  "version": "0.0.1",
+  "type": "flogo:trigger",
+  "ref": "github.com/hugofmcruz/flogo/triggers/dump1090",
+  "description": "DUMP1090 Trigger to Connect to Radar and get flight info. ",
+  "author": "Hugo Cruz <hugo.m.cruz@gmail.com>",
+  "settings":[
+    {
+      "name": "dump1090-server",
+      "type": "string",
+      "value": "localhost"
+      "description": "DUMP1090 Sever Name or IP address"
+    },
+    {
+      "name": "dump1090-port",
+      "type": "string",
+      "value": "30002"
+    }
+  ],
+  "output": [
+    {
+      "name": "output",
+      "type": "string"
+    }
+  ],
+  "handler": {
+    "settings": [
+      {
+        "name": "seconds",
+        "type": "string"
+      }
+    ]
+  }
+}
