@@ -5,31 +5,53 @@
   "ref": "github.com/hugofmcruz/flogo-dump",
   "description": "DUMP1090 Trigger to Connect to Radar and get flight info. ",
   "author": "Hugo Cruz <hugo.m.cruz@gmail.com>",
-  "settings":[
+  "settings": [
     {
-      "name": "dump1090-server",
+      "name": "brokerUrls",
       "type": "string",
-      "value": "localhost",
-      "description": "DUMP1090 Sever Name or IP address"
+      "description": "The Kafka cluster to connect to"
     },
     {
-      "name": "dump1090-port",
+      "name": "user",
       "type": "string",
-      "value": "30002"
-    }
-  ],
-  "output": [
+      "description": "If connecting to a SASL enabled port, the user id to use for authentication"
+    },
     {
-      "name": "output",
-      "type": "string"
+      "name": "password",
+      "type": "string",
+      "description": "If connecting to a SASL enabled port, the password to use for authentication"
+    },
+    {
+      "name": "trustStore",
+      "type": "string",
+      "description": "If connecting to a TLS secured port, the directory containing the certificates representing the trust chain for the connection. This is usually just the CACert used to sign the server's certificate"
     }
   ],
   "handler": {
     "settings": [
       {
-        "name": "seconds",
-        "type": "string"
+        "name": "topic",
+        "type": "string",
+        "required": "true",
+        "description": "The Kafka topic on which to listen for messages"
+      },
+      {
+        "name": "partitions",
+        "type": "string",
+        "description": "The specific partitions to consume messages from"
+      },
+      {
+        "name": "offset",
+        "type": "int",
+        "description": "The offset to use when starting to consume messages"
       }
     ]
-  }
+  },
+  "output": [
+    {
+      "name": "message",
+      "type": "string",
+      "description": "The message that was consumed"
+    }
+  ]
 }
