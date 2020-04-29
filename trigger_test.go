@@ -2,7 +2,6 @@ package dump1090
 
 import (
 	"io/ioutil"
-	"encoding/json"
 	"testing"
 
 	"github.com/TIBCOSoftware/flogo-lib/core/trigger"
@@ -45,7 +44,7 @@ func TestCreate(t *testing.T) {
 
 	// New Trigger
 	config := trigger.Config{}
-	json.Unmarshal([]byte(testConfig), config)
+	//json.Unmarshal([]byte(testConfig), config)
 	trg := f.New(&config)
 
 	if trg == nil {
